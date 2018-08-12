@@ -90,8 +90,6 @@ public class ToolBox
             {
                 RadioButton chk = (RadioButton)new_toggle.getToggleGroup().getSelectedToggle();
                 numberOfPoints = Character.toString(chk.getText().toString().charAt(0));                
-                System.out.println("Selected Radio Button - "+numberOfPoints);
-                System.out.println("string length "+numberOfPoints.length());
             } 
         });
         
@@ -103,8 +101,6 @@ public class ToolBox
             {
                 RadioButton chk = (RadioButton)new_toggle.getToggleGroup().getSelectedToggle();
                 colorOfBuildBlock = chk.getText().toString();
-                System.out.println("Selected Color Radio Button - "+colorOfBuildBlock);
-                System.out.println("Color string length "+colorOfBuildBlock.length());
             } 
         });
         
@@ -124,10 +120,9 @@ public class ToolBox
                 }
                 else
                 {
-                    Label warningLabel = new Label("Please select them");
+                    Label warningLabel = new Label("Please select the color and number of points");
                     warningLabel.setStyle("-fx-font-size: 18px;");
                     gridPane.add(warningLabel, 0, 6);
-                    System.out.println("please select them");
                     buildBlock = null;
                 }
             }

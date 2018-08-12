@@ -5,6 +5,7 @@ import static javafx.application.Application.launch;
 import javafx.stage.Stage;
 import de.tuc.buildingblockui.gui.WorkingArea;
 import de.tuc.buildingblockui.pojo.BuildingBlockLists;
+import de.tuc.buildingblockui.utils.ConfigProperty;
 
 
 public class MainApp extends Application 
@@ -18,7 +19,9 @@ public class MainApp extends Application
     
     public static void main(String[] args) 
     {
+        ConfigProperty.readProperty();
         launch(args);
+        
     }
 
 }

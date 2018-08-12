@@ -2,6 +2,8 @@ package de.tuc.buildingblockui.gui;
 
 import de.tuc.buildingblockui.pojo.BuildBlock;
 import de.tuc.buildingblockui.pojo.BuildingBlockLists;
+import de.tuc.buildingblockui.utils.ConfigProperty;
+import de.tuc.buildingblockui.utils.SemanticRules;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -28,9 +30,9 @@ public class WorkingArea
         BuildBlock buildBlock = null;
         BuildingBlockLists.createDummy(gridPane);/*only to clreate dummy nodes. DELETE THIS LINE IN PRODUCTION or replace with original data from network*/
         
-        for (int i = 0; i <= 20; i++) 
+        for (int i = 0; i <= ConfigProperty.getNumberOfGridColumns(); i++) 
         {
-            for (int j = 0; j <= 20; j++) 
+            for (int j = 0; j <= ConfigProperty.getNumberOfGridRows(); j++) 
             {
                 buildBlock = BuildingBlockLists.checkExistingBuildBlockList(j,i);
                 if(buildBlock != null)
@@ -86,6 +88,9 @@ public class WorkingArea
         Label label = new Label("      "+buildBlock.getNumberOfPoints());
         label.setStyle("-fx-border-color: #DCDCDC; -fx-background-color: "+buildBlock.getBuildingBlockColor()+";");
         gridPane.add(label, columnIndex, rowIndex, 1, 1);
+        
+        //testNodeByIndex(rowIndex, columnIndex);
+        boolean b = SemanticRules.checkSementicRules(rowIndex, columnIndex, gridPane);
     }
 
 }

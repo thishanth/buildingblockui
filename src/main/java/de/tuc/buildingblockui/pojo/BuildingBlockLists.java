@@ -11,11 +11,18 @@ public class BuildingBlockLists
 {
     private static LinkedList<BuildBlock> editedBuildingBlockLists = new LinkedList();
     private static LinkedList<BuildBlock> buildingBlockLists = new LinkedList();
+
+    public static LinkedList<BuildBlock> getBuildingBlockLists() 
+    {
+        return buildingBlockLists;
+    }
+    
     
     public static void addBuildingBlockToList(BuildBlock buildBlock) 
     {
         editedBuildingBlockLists.removeIf(b -> (b.getRowIndex() == buildBlock.getRowIndex() && b.getColumnIndex() == buildBlock.getColumnIndex()));
         editedBuildingBlockLists.add(buildBlock);
+        buildingBlockLists.add(buildBlock);
     }
     
     public static void createDummy(GridPane gridPane)
