@@ -37,7 +37,7 @@ public class ToolBox
         label.setStyle("-fx-font-size: 18px;");
                 
         HBox root = new HBox();
-        Scene scene = new Scene(root, 300, 200);
+        Scene scene = new Scene(root, 300, 220);
         stage.setScene(scene);
 
         ToggleGroup group = new ToggleGroup();
@@ -73,7 +73,8 @@ public class ToolBox
         HBox button = new HBox();
         Button ok = new Button("Okay");
         Button cancel = new Button("Cancel");
-        button.getChildren().addAll(ok, cancel);
+        Button delete = new Button("Delete");
+        button.getChildren().addAll(ok, cancel, delete);
         
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10); 
@@ -125,7 +126,7 @@ public class ToolBox
                 }
                 else
                 {
-                    Label warningLabel = new Label("Please select the color and number of points");
+                    Label warningLabel = new Label("Please select the color and \n number of points");
                     warningLabel.setStyle("-fx-font-size: 18px;");
                     gridPane.add(warningLabel, 0, 6);
                     buildBlock = null;
@@ -142,6 +143,25 @@ public class ToolBox
             {
                 stage.close();
                 System.out.println("cancel clicked!");
+            }
+        });
+        
+        
+        /*EVENT: button Delete clicked*/
+        delete.setOnAction(new EventHandler<ActionEvent>() 
+        {
+            @Override
+            public void handle(ActionEvent event) 
+            {
+                if (BuildingBlockLists.getInExistingBuildBlockList(rowIndex, columnIndex) != null) 
+                {
+                    System.out.println("Valuable building block!");
+                    buildBlock = new BuildBlock(rowIndex, columnIndex, "", "white");
+                    WorkingArea.deleteGrid(rowIndex, columnIndex, node);
+                    BuildingBlockLists.addBuildingBlockToList(buildBlock);
+                    stage.close();   
+                }
+                System.out.println("Delete clicked!");
             }
         });
     }

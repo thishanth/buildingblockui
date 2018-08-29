@@ -35,7 +35,7 @@ public class WorkingArea
             for (int j = 0; j <= ConfigProperty.getNumberOfGridRows(); j++) 
             {
                 /* get the building block if its exist in the given cell */
-                buildBlock = BuildingBlockLists.getInExistingBuildBlockList(j,i);
+                buildBlock = BuildingBlockLists.getInExistingBuildBlockList(i,j);
                 /*if the particular cell is empty then create empty building block*/
                 if(buildBlock != null)
                 {
@@ -80,11 +80,12 @@ public class WorkingArea
             @Override
             public void run() 
             {
-                ToolBox.showToolBox(rowIndex, columnIndex, node);/*show options to create or edit building block*/
+                ToolBox.showToolBox(rowIndex, columnIndex, node);/*show options to create or edit or delete building block*/
             }
         });
     }
     
+    /*Edit the grid cell*/
     public static void updateGrid(BuildBlock buildBlock, int rowIndex, int columnIndex, Node node)
     {
         gridPane.getChildren().remove(node);
@@ -92,8 +93,20 @@ public class WorkingArea
         label.setStyle("-fx-border-color: #DCDCDC; -fx-background-color: "+buildBlock.getBuildingBlockColor()+";");
         gridPane.add(label, columnIndex, rowIndex, 1, 1);
         
-        //testNodeByIndex(rowIndex, columnIndex);
-        boolean b = SemanticRules.checkSementicRules(rowIndex, columnIndex, gridPane);
+        //boolean b = SemanticRules.checkSementicRules(rowIndex, columnIndex, gridPane);
+    }
+    
+        
+    /*Delete the grid cell and update with empty label */
+    public static void deleteGrid(int rowIndex, int columnIndex, Node node)
+    {
+        gridPane.getChildren().remove(node);
+        
+        Label label = new Label("        ");
+        label.setStyle("-fx-border-color: #DCDCDC; -fx-background-color: white;");
+        gridPane.add(label, columnIndex, rowIndex, 1, 1);
+        
+        //boolean b = SemanticRules.checkSementicRules(rowIndex, columnIndex, gridPane);
     }
 
 }

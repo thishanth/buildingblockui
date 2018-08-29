@@ -55,11 +55,12 @@ public class BuildingBlockLists
 
     
     /* get the building block if its exist in the given cell */
-    public static BuildBlock getInExistingBuildBlockList(int j, int i) 
+    public static BuildBlock getInExistingBuildBlockList(int rIndex, int cIndex) 
     {
+        System.out.println("row "+rIndex+" column "+cIndex);
         for (BuildBlock b : buildingBlockLists) 
         {
-            if (b.getRowIndex() == j && b.getColumnIndex() == i) 
+            if (b.getRowIndex() == rIndex && b.getColumnIndex() == cIndex) 
             {
                 return b;
             }
