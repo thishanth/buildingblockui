@@ -25,6 +25,7 @@ public class BuildingBlockLists
         buildingBlockLists.add(buildBlock);
     }
     
+    /* Create dummy nodes. DELETE THIS FUNCTION IN PRODUCTION or replace with original data from network*/
     public static void createDummy(GridPane gridPane)
     {
         BuildBlock buildBlock;
@@ -33,16 +34,18 @@ public class BuildingBlockLists
         int High = 20;
         int rowIndex, columnIndex;
         
-        //List<String> colors = new ArrayList<>(Arrays.asList("blue", "green", "red", "yellow"));
-        List<String> colors = new ArrayList<>(Arrays.asList("blue", "#107c10", "#d81e05", "yellow"));
+        List<String> colors = new ArrayList<>(Arrays.asList("blue", "green", "red", "yellow"));
         List<String> points = new ArrayList<>(Arrays.asList("2", "4"));
 
         for (int i = 0; i < 101; i++) 
         {
+            /*random row and column*/
             rowIndex = r.nextInt(High-Low) + Low;
             columnIndex = r.nextInt(High-Low) + Low;
             
+            /*random color*/
             String colorStr = colors.get(r.nextInt(4-0) + 0);
+            /*random number of points*/
             String pointStr = points.get(r.nextInt(2-0) + 0);
             
             buildBlock = new BuildBlock(rowIndex, columnIndex, pointStr, colorStr);
@@ -51,7 +54,8 @@ public class BuildingBlockLists
     }
 
     
-    public static BuildBlock checkExistingBuildBlockList(int j, int i) 
+    /* get the building block if its exist in the given cell */
+    public static BuildBlock getInExistingBuildBlockList(int j, int i) 
     {
         for (BuildBlock b : buildingBlockLists) 
         {

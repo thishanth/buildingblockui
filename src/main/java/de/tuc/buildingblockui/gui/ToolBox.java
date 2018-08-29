@@ -25,8 +25,12 @@ public class ToolBox
     private static BuildBlock buildBlock = null;
 
     
+    /*show options to create or edit building block*/
     public static void showToolBox(int rowIndex, int columnIndex, Node node) 
     {
+        numberOfPoints = null;
+        colorOfBuildBlock = null;
+        
         stage = new Stage();
         stage.setTitle("Tool Box");
         Label label = new Label("Number of Points");
@@ -104,7 +108,8 @@ public class ToolBox
             } 
         });
         
-        /*button Okay clicked*/
+        
+        /*EVENT: button Okay clicked*/
         ok.setOnAction(new EventHandler<ActionEvent>() 
         {
             @Override
@@ -125,6 +130,18 @@ public class ToolBox
                     gridPane.add(warningLabel, 0, 6);
                     buildBlock = null;
                 }
+            }
+        });
+        
+        
+        /*EVENT: button Calcel clicked*/
+        cancel.setOnAction(new EventHandler<ActionEvent>() 
+        {
+            @Override
+            public void handle(ActionEvent event) 
+            {
+                stage.close();
+                System.out.println("cancel clicked!");
             }
         });
     }

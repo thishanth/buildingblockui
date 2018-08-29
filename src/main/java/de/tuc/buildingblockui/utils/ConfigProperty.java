@@ -27,12 +27,11 @@ public class ConfigProperty
 	try 
         {
             input = new FileInputStream("src/main/resources/config.properties");
-            // load a properties file
+            /* load a properties file */
             prop.load(input);
-            // get the property value and print it out
+            /* get the property value and print it out */
             numberOfGridRows = Integer.parseInt(prop.getProperty("numberOfGridRows"));
             numberOfGridColumns = Integer.parseInt(prop.getProperty("numberOfGridColumns"));
-
 	} catch (IOException ex) {
             ex.printStackTrace();
 	} finally {

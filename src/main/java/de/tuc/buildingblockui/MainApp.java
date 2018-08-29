@@ -18,7 +18,7 @@ public class MainApp extends Application
     
     public static void main(String[] args) 
     {
-        ConfigProperty.readProperty();
+        ConfigProperty.readProperty();/*reading project configs*/
         launch(args);
         
     }

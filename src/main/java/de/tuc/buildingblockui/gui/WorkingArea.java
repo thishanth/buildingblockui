@@ -28,19 +28,21 @@ public class WorkingArea
 
         Label label;
         BuildBlock buildBlock = null;
-        BuildingBlockLists.createDummy(gridPane);/*only to clreate dummy nodes. DELETE THIS LINE IN PRODUCTION or replace with original data from network*/
+        BuildingBlockLists.createDummy(gridPane);/*only to create dummy nodes. DELETE THIS LINE IN PRODUCTION or replace with original data from network*/
         
         for (int i = 0; i <= ConfigProperty.getNumberOfGridColumns(); i++) 
         {
             for (int j = 0; j <= ConfigProperty.getNumberOfGridRows(); j++) 
             {
-                buildBlock = BuildingBlockLists.checkExistingBuildBlockList(j,i);
+                /* get the building block if its exist in the given cell */
+                buildBlock = BuildingBlockLists.getInExistingBuildBlockList(j,i);
+                /*if the particular cell is empty then create empty building block*/
                 if(buildBlock != null)
                 {
                     label = new Label("      "+buildBlock.getNumberOfPoints());
                     label.setStyle("-fx-border-color: #DCDCDC; -fx-background-color: "+buildBlock.getBuildingBlockColor()+";");
                 }
-                else
+                else /*if the particular building block is not empty then create a proper build block using its values*/
                 {
                     label = new Label("        ");
                     label.setStyle("-fx-border-color: #DCDCDC; -fx-background-color: white;");
@@ -53,13 +55,14 @@ public class WorkingArea
         primaryStage.setScene(scene);
         primaryStage.show();
         
+        /*this event will triger if mouse clicked in any cell*/
         gridPane.addEventHandler(MouseEvent.MOUSE_PRESSED, e ->
         {            
             for( Node node: gridPane.getChildren()) 
             {
                 if( node instanceof Label) 
                 {
-                    if( node.getBoundsInParent().contains(e.getSceneX(),  e.getSceneY())) 
+                    if( node.getBoundsInParent().contains(e.getSceneX(),  e.getSceneY()))/*get the clicked cell*/ 
                     {   
                         replaceNode(GridPane.getRowIndex( node), GridPane.getColumnIndex( node), node);             
                         System.out.println( "Node: " + GridPane.getRowIndex( node) + "/" + GridPane.getColumnIndex( node));
@@ -77,7 +80,7 @@ public class WorkingArea
             @Override
             public void run() 
             {
-                ToolBox.showToolBox(rowIndex, columnIndex, node);
+                ToolBox.showToolBox(rowIndex, columnIndex, node);/*show options to create or edit building block*/
             }
         });
     }
