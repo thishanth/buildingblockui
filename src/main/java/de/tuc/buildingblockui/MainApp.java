@@ -4,7 +4,6 @@ import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.stage.Stage;
 import de.tuc.buildingblockui.gui.WorkingArea;
-import de.tuc.buildingblockui.pojo.BuildingBlockLists;
 import de.tuc.buildingblockui.utils.ConfigProperty;
 
 
