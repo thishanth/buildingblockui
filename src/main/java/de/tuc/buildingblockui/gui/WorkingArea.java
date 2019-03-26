@@ -8,9 +8,11 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class WorkingArea 
@@ -49,10 +51,11 @@ public class WorkingArea
                 }
                 gridPane.add(label, j, i, 1, 1);
             }
-        }        
+        }
 
         Scene scene = new Scene(gridPane, 800, 400);
         primaryStage.setScene(scene);
+        //primaryStage.setScene(scene2);
         primaryStage.show();
         
         /*this event will triger if mouse clicked in any cell*/

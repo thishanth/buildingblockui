@@ -56,24 +56,26 @@ public class ToolBox
         
         HBox colorRoot = new HBox();
         ToggleGroup colorGroup = new ToggleGroup();
-        RadioButton green = new RadioButton("Green");
+        RadioButton green = new RadioButton("#7CBB00");
         green.setToggleGroup(colorGroup);
-        green.setStyle("-fx-font-size: 15px; -fx-background-color: green;");
-        RadioButton red = new RadioButton("Red");
+        green.setStyle("-fx-font-size: 15px; -fx-background-color: #7CBB00;");
+        RadioButton red = new RadioButton("#FFBB00");
         red.setToggleGroup(colorGroup);
-        red.setStyle("-fx-font-size: 15px; -fx-background-color: red;");
-        RadioButton blue = new RadioButton("Blue");
+        red.setStyle("-fx-font-size: 15px; -fx-background-color: #FFBB00;");
+        RadioButton blue = new RadioButton("#00A1F1");
         blue.setToggleGroup(colorGroup);
-        blue.setStyle("-fx-font-size: 15px; -fx-background-color: Blue;");
-        RadioButton gray = new RadioButton("Yellow");
+        blue.setStyle("-fx-font-size: 15px; -fx-background-color: #00A1F1;");
+        RadioButton gray = new RadioButton("#F65314");
         gray.setToggleGroup(colorGroup);
-        gray.setStyle("-fx-font-size: 15px; -fx-background-color: yellow;");
+        gray.setStyle("-fx-font-size: 15px; -fx-background-color: #F65314;");
         colorRoot.getChildren().addAll(green, red, blue, gray);
         
         HBox button = new HBox();
-        Button ok = new Button("Okay");
+        Button ok = new Button("Save");
         Button cancel = new Button("Cancel");
         Button delete = new Button("Delete");
+        Button lockTile = new Button("Acquire Lock");
+        Button updateOnFabric = new Button("Save in Fabric Network");
         button.getChildren().addAll(ok, cancel, delete);
         
         GridPane gridPane = new GridPane();
@@ -84,6 +86,8 @@ public class ToolBox
         gridPane.add(label2, 0, 3);
         gridPane.add(colorRoot, 0, 4);
         gridPane.add(button, 0, 5);
+        gridPane.add(lockTile, 0, 7);
+        gridPane.add(updateOnFabric, 0, 8);
 
         scene.setRoot(gridPane);
         stage.show();

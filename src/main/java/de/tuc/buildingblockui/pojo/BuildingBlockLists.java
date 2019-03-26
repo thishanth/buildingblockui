@@ -34,10 +34,11 @@ public class BuildingBlockLists
         int High = 20;
         int rowIndex, columnIndex;
         
-        List<String> colors = new ArrayList<>(Arrays.asList("blue", "green", "red", "yellow"));
+        //List<String> colors = new ArrayList<>(Arrays.asList("blue", "#7aae1a", "red", "yellow"));
+        List<String> colors = new ArrayList<>(Arrays.asList("#F65314", "#00A1F1", "#7CBB00", "#FFBB00"));
         List<String> points = new ArrayList<>(Arrays.asList("2", "4"));
 
-        for (int i = 0; i < 101; i++) 
+        for (int i = 0; i < 2; i++)
         {
             /*random row and column*/
             rowIndex = r.nextInt(High-Low) + Low;
